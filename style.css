@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+}
+
+.container-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.operand-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    flex: 0 0 auto;
+}
