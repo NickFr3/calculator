@@ -15,10 +15,10 @@ function divide(a, b) {
     return a / b;
 }
 
-// Operation variables (hardcoded for now)
-let num1 = 5;
-let num2 = 3;
-let operand = '+';
+// Split input to gather numbers and operand
+function splitInput(input) {
+    return input.split(/([+\-*/])/);
+}
 
 // return a result by calling it's required operation function
 function operate(num1, num2, operand) {
@@ -37,4 +37,24 @@ function operate(num1, num2, operand) {
     }
 }
 
-console.log(operate(num1, num2, operand));
+// Gather relevant items
+const container = document.querySelector('.container');
+const inputField = document.querySelector('.input-window');
+
+// Listen for clicks in container to append clicked number or operand to input window
+container.addEventListener('click', (event) => {
+    if (event.target.tagName == 'BUTTON') {
+        switch (event.target.textContent) {
+            case 'C':
+                inputField.value = '';
+                break;
+    
+            case '=':
+                // Split input value and call operate() to return result inside input field
+
+            default:
+                inputField.value += event.target.textContent;
+                break;
+        }
+    }
+})
