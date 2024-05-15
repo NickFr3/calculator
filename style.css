@@ -1,22 +1,17 @@
 .container {
-    display: flex;
-}
-
-.container-left {
-    display: flex;
-    flex-direction: column;
-}
-
-.main-buttons {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 100px);
 }
 
-.operand-buttons {
-    display: flex;
-    flex-direction: column;
+.input-window {
+    grid-column: 1 / -1;
+    text-align: end;
 }
 
-.btn {
-    flex: 0 0 auto;
+#clear {
+    grid-column: span 2;
+}
+
+#zero {
+    grid-column: span 2;
 }
