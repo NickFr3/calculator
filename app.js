@@ -15,7 +15,7 @@ function divide(a, b) {
     return a / b;
 }
 
-// Split input to gather numbers and operand
+// Split input in the same order as displayed to gather numbers and operand as an array
 function splitInput(input) {
     return input.split(/([+\-*/])/);
 }
@@ -43,18 +43,18 @@ const inputField = document.querySelector('.input-window');
 
 // Listen for clicks in container to append clicked number or operand to input window
 container.addEventListener('click', (event) => {
-    if (event.target.tagName == 'BUTTON') {
-        switch (event.target.textContent) {
-            case 'C':
-                inputField.value = '';
-                break;
-    
-            case '=':
-                // Split input value and call operate() to return result inside input field
+    const targetTag = event.target.tagName;
+    const targetContent = event.target.textContent;
 
-            default:
-                inputField.value += event.target.textContent;
-                break;
-        }
+    if (targetTag == 'BUTTON' && targetContent == 'C') {
+        inputField.value = '';
+
+    } else if (targetTag == 'BUTTON' && targetContent == '=') {
+        // Split input value and call operate() to return result inside input field
+        let valuesArray = splitInput(inputField.value);
+
+        inputField.value = operate(valuesArray[0], valuesArray[2], valuesArray[1]);
+    } else {
+        inputField.value += event.target.textContent;
     }
-})
+});
