@@ -44,7 +44,6 @@ const inputField = document.querySelector('.input-window');
 // Listen for clicks in container to append clicked number or operand to input window
 container.addEventListener('click', (event) => {
 
-
     const targetTag = event.target.tagName;
     const targetContent = event.target.textContent;
 
@@ -56,10 +55,19 @@ container.addEventListener('click', (event) => {
         let valuesArray = splitInput(inputField.textContent);
 
         inputField.textContent = operate(valuesArray[0], valuesArray[2], valuesArray[1]);
+
+    } else if (targetTag === 'BUTTON' && event.target.textContent === '%') {
+        inputField.textContent /= 100;
+
     } else if (targetTag !== 'BUTTON') {
         return;
 
     } else {
-        inputField.textContent += event.target.textContent;
+        if (inputField.textContent === '0') {
+            inputField.textContent = event.target.textContent;
+
+        } else {
+            inputField.textContent += event.target.textContent;
+        }
     }
 });
