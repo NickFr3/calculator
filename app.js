@@ -54,7 +54,14 @@ container.addEventListener('click', (event) => {
         // Split input value and call operate() to return result inside input field
         let valuesArray = splitInput(inputField.textContent);
 
-        inputField.textContent = operate(valuesArray[0], valuesArray[2], valuesArray[1]);
+        // Check if dividing by 0, otherwise continuw with operation
+        if (valuesArray[1] === '/' && valuesArray[2] === '0') {
+            alert('Cannot divide by 0!');
+
+        } else {
+            inputField.textContent = operate(valuesArray[0], valuesArray[2], valuesArray[1]);
+        }
+
 
     } else if (targetTag === 'BUTTON' && event.target.textContent === '%') {
         inputField.textContent /= 100;
